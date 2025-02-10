@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "761947833844",
+    "project_id": "gestionincidenciasvecinos",
+    "storage_bucket": "gestionincidenciasvecinos.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:761947833844:android:2c2a133865f0786277e5a1",
+        "android_client_info": {
+          "package_name": "com.example.gestionincidenciasvecinos"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDEZbKvQsSSItlhnxnsOSVhMjl1mwOecFc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
