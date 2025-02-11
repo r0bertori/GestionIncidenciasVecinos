@@ -12,11 +12,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GestionIncidenciasVecinos"
         tools:targetApi="31">
-        <activity
-            android:name=".LoginActivity"
-            android:exported="false" />
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyDEZbKvQsSSItlhnxnsOSVhMjl1mwOecFc" />
         <activity
             android:name=".MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".RegistroActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LoginActivity"
             android:exported="true"
             android:label="@string/app_name">
             <intent-filter>
