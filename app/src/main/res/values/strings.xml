@@ -1,5 +1,4 @@
 <resources>
-    <string name="client_id">761947833844-i8rj85fo6nu5acph1hhfdpuc1qj0fkrd.apps.googleusercontent.com</string>
     <string name="app_name">GestionIncidenciasVecinos</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>

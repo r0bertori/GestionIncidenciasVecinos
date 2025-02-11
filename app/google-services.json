@@ -1,7 +1,6 @@
 {
   "project_info": {
     "project_number": "761947833844",
-    "firebase_url": "https://gestionincidenciasvecinos-default-rtdb.firebaseio.com",
     "project_id": "gestionincidenciasvecinos",
     "storage_bucket": "gestionincidenciasvecinos.firebasestorage.app"
   },
@@ -13,12 +12,7 @@
           "package_name": "com.example.gestionincidenciasvecinos"
         }
       },
-      "oauth_client": [
-        {
-          "client_id": "761947833844-i8rj85fo6nu5acph1hhfdpuc1qj0fkrd.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
+      "oauth_client": [],
       "api_key": [
         {
           "current_key": "AIzaSyDEZbKvQsSSItlhnxnsOSVhMjl1mwOecFc"
@@ -26,12 +20,7 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "761947833844-i8rj85fo6nu5acph1hhfdpuc1qj0fkrd.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
+          "other_platform_oauth_client": []
         }
       }
     }
