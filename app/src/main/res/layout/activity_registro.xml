@@ -29,7 +29,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/tvTituloRegistro"
         app:layout_constraintStart_toStartOf="@id/etCorreoRegistro"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="@dimen/margin_mediano"
         android:text="Correo"
         android:textSize="15sp"
         android:textColor="@color/color_principal"/>
@@ -54,7 +54,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/etCorreoRegistro"
         app:layout_constraintStart_toStartOf="@id/etPwdRegistro"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="@dimen/margin_mediano"
         android:text="Contraseña"
         android:textSize="15sp"
         android:textColor="@color/color_principal"/>
@@ -73,28 +73,77 @@
         android:textColor="@color/black"
         android:singleLine="true"/>
 
-    <!-- CONTRASEÑA -->
+    <!-- NOMBRE Y APELLIDOS -->
     <TextView
-        android:id="@+id/tvRepetirPwdRegistro"
+        android:id="@+id/tvNombreApellidosRegistro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/etPwdRegistro"
-        app:layout_constraintStart_toStartOf="@id/etRepetirPwdRegistro"
-        android:layout_marginTop="20dp"
-        android:text="Repetir contraseña"
+        app:layout_constraintStart_toStartOf="@id/etNombreApellidosRegistro"
+        android:layout_marginTop="@dimen/margin_mediano"
+        android:text="Nombre y apellidos"
         android:textSize="15sp"
         android:textColor="@color/color_principal"/>
 
     <EditText
-        android:id="@+id/etRepetirPwdRegistro"
-        android:inputType="textPassword"
+        android:id="@+id/etNombreApellidosRegistro"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvRepetirPwdRegistro"
+        app:layout_constraintTop_toBottomOf="@id/tvNombreApellidosRegistro"
         android:background="@drawable/et_borde_login"
-        android:hint="Repite la contraseña"
+        android:hint="Introduce tu nombre y apellidos"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        android:singleLine="true"/>
+
+    <!-- PISO Y LETRA -->
+    <TextView
+        android:id="@+id/tvPisoLetra"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/etNombreApellidosRegistro"
+        app:layout_constraintStart_toStartOf="@id/etPisoLetra"
+        android:layout_marginTop="@dimen/margin_mediano"
+        android:text="Piso y letra"
+        android:textSize="15sp"
+        android:textColor="@color/color_principal"/>
+
+    <EditText
+        android:id="@+id/etPisoLetra"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvPisoLetra"
+        android:background="@drawable/et_borde_login"
+        android:hint="Introduce tu piso y letra"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        android:singleLine="true"/>
+
+    <!-- NÚMERO DE TELÉFONO -->
+    <TextView
+        android:id="@+id/tvNumTelefono"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/etPisoLetra"
+        app:layout_constraintStart_toStartOf="@id/etNumTelefono"
+        android:layout_marginTop="@dimen/margin_mediano"
+        android:text="Número de teléfono"
+        android:textSize="15sp"
+        android:textColor="@color/color_principal"/>
+
+    <EditText
+        android:id="@+id/etNumTelefono"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvNumTelefono"
+        android:background="@drawable/et_borde_login"
+        android:hint="Introduce tu nombre teléfono"
         android:textSize="20sp"
         android:textColor="@color/black"
         android:singleLine="true"/>
@@ -104,7 +153,7 @@
         android:id="@+id/tvMensajeErrorRegistro"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/etRepetirPwdRegistro"
+        app:layout_constraintTop_toBottomOf="@id/etNumTelefono"
         android:layout_marginTop="5dp"
         android:gravity="center"
         android:text="Mensaje de error"
@@ -116,8 +165,8 @@
         android:id="@+id/btnRegistro"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/tvMensajeErrorRegistro"
-        android:layout_marginTop="40dp"
+        app:layout_constraintTop_toBottomOf="@id/etNumTelefono"
+        android:layout_marginTop="@dimen/margin_grande"
         android:background="@drawable/btn_bordes_redondeados"
         android:backgroundTint="@color/color_principal"
         android:text="Regístrate"

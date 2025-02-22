@@ -30,11 +30,8 @@ import com.google.firebase.database.ValueEventListener;
 
 public class RegistroActivity extends AppCompatActivity {
 
-    EditText etCorreoRegistro;
-    EditText etPwdRegistro;
-    EditText etRepetirPwdRegistro;
-    TextView tvIniciarSesionRegistro;
-    TextView tvMensajeErrorRegistro;
+    EditText etCorreoRegistro, etPwdRegistro, etNombreApellidosRegistro, etPisoLetra, etNumTelefono;
+    TextView tvIniciarSesionRegistro, tvMensajeErrorRegistro;
     Button btnRegistro;
     FirebaseAuth mAuth;
     DatabaseReference refUsuarios;
@@ -48,7 +45,9 @@ public class RegistroActivity extends AppCompatActivity {
         // Componentes
         etCorreoRegistro = findViewById(R.id.etCorreoRegistro);
         etPwdRegistro = findViewById(R.id.etPwdRegistro);
-        etRepetirPwdRegistro = findViewById(R.id.etRepetirPwdRegistro);
+        etNombreApellidosRegistro = findViewById(R.id.etNombreApellidosRegistro);
+        etPisoLetra = findViewById(R.id.etPisoLetra);
+        etNumTelefono = findViewById(R.id.etNumTelefono);
         tvIniciarSesionRegistro = findViewById(R.id.tvIniciarSesionRegistro);
         tvMensajeErrorRegistro = findViewById(R.id.tvMensajeErrorRegistro);
         btnRegistro = findViewById(R.id.btnRegistro);
@@ -66,16 +65,21 @@ public class RegistroActivity extends AppCompatActivity {
 
                 String correo = etCorreoRegistro.getText().toString();
                 String pwd = etPwdRegistro.getText().toString();
-                String repetirPwd = etRepetirPwdRegistro.getText().toString();
+                String nomApe = etNombreApellidosRegistro.getText().toString();
+                String pisoLetra = etPisoLetra.getText().toString();
+                String num = etNumTelefono.getText().toString();
 
-                if (!correo.isEmpty() && !pwd.isEmpty() && !repetirPwd.isEmpty()) {
-                    if (contraseniasCorrectas(pwd, repetirPwd)) {
-                        if (!correoYaRegistrado(correo)) {
-                            registrarUsuario(correo, pwd);
-                        } else {
-                            tvMensajeErrorRegistro.setText("El correo ya está registrado");
-                            tvMensajeErrorRegistro.setVisibility(View.VISIBLE);
-                        }
+                if (!correo.isEmpty() &&
+                        !pwd.isEmpty() &&
+                        !nomApe.isEmpty() &&
+                        !pisoLetra.isEmpty() &&
+                        !num.isEmpty()) {
+                    if (!correoYaRegistrado(correo)) {
+                        Usuario usuario = new Usuario(correo, pwd, nomApe, pisoLetra, num);
+                        registrarUsuario(usuario);
+                    } else {
+                        tvMensajeErrorRegistro.setText("El correo ya está registrado");
+                        tvMensajeErrorRegistro.setVisibility(View.VISIBLE);
                     }
                 } else {
                     tvMensajeErrorRegistro.setText("Debes rellenar todos los campos");
@@ -123,15 +127,15 @@ public class RegistroActivity extends AppCompatActivity {
 
     }
 
-    private void registrarUsuario(String correo, String pwd) {
-        mAuth.createUserWithEmailAndPassword(correo, pwd)
+    private void registrarUsuario(Usuario usuario) {
+        mAuth.createUserWithEmailAndPassword(usuario.getCorreo(), usuario.getCorreo())
                 .addOnCompleteListener(RegistroActivity.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            registroEnDataBase(correo);
+                            registroEnDataBase(usuario);
                             Log.d("FirebaseAuth", "Registro hecho");
-                        } else if (pwd.length() >= 6){
+                        } else if (usuario.getPwd().length() >= 6){
                             Toast.makeText(RegistroActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                             Log.d("FirebaseAuth", task.getException().toString());
                         }
@@ -139,18 +143,18 @@ public class RegistroActivity extends AppCompatActivity {
                 });
     }
 
-    private void registroEnDataBase(String correo) {
+    private void registroEnDataBase(Usuario usuario) {
 
-        String id = correo
+        String id = usuario.getCorreo()
                 .replace(".", "")
                 .replace("#", "")
                 .replace("$", "")
                 .replace("[", "")
                 .replace("]", "");
 
-        Usuario u = new Usuario(id, correo, false);
+        usuario.setId(id);
 
-        refUsuarios.child(id).setValue(u).addOnCompleteListener(task -> {
+        refUsuarios.child(id).setValue(usuario).addOnCompleteListener(task -> {
            if (task.isSuccessful()) {
                guardarUsuario(id);
                Toast.makeText(this, "Usuario registardo con éxito", Toast.LENGTH_SHORT).show();
@@ -160,24 +164,6 @@ public class RegistroActivity extends AppCompatActivity {
            }
         });
 
-    }
-
-    private boolean contraseniasCorrectas(String pwd, String repetirPwd) {
-        boolean validas = true;
-
-        // Comprobar que sean iguales
-        if (!pwd.equals(repetirPwd)) {
-            tvMensajeErrorRegistro.setText("Las contraseñas no coinciden");
-            tvMensajeErrorRegistro.setVisibility(View.VISIBLE);
-        }
-
-        // Comprobar que tenga 6 o más caracteres
-        else if (pwd.length() < 6) {
-            tvMensajeErrorRegistro.setText("La contraseña debe contener 6 o más caracteres");
-            tvMensajeErrorRegistro.setVisibility(View.VISIBLE);
-        }
-
-        return validas;
     }
 
     private void guardarUsuario(String id) {

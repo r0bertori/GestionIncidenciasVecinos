@@ -1,4 +1,4 @@
-package com.example.gestionincidenciasvecinos.ui.dashboard;
+package com.example.gestionincidenciasvecinos.dashboard;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
