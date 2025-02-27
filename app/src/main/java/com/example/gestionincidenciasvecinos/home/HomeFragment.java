@@ -37,6 +37,7 @@ public class HomeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mAuth = FirebaseAuth.getInstance();
+        limpiarFragmentos();
         viewModel = new ViewModelProvider(requireActivity()).get(HomeViewModel.class);
 
         id = mAuth.getCurrentUser().getEmail()
@@ -133,7 +134,7 @@ public class HomeFragment extends Fragment {
 
     private void limpiarFragmentos() {
         for (Fragment fragment : getChildFragmentManager().getFragments()) {
-            getChildFragmentManager().beginTransaction().remove(fragment).commit();
+            getChildFragmentManager().beginTransaction().remove(fragment).commitNow();
         }
         binding.llContenedorFragments.removeAllViews();
     }

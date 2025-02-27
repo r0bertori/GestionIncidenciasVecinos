@@ -1,5 +1,6 @@
 package com.example.gestionincidenciasvecinos.home;
 
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 import android.os.Bundle;
@@ -65,7 +66,8 @@ public class TarjetaIncidenciaFragment extends Fragment {
                     DetallesIncidenciaFragment detallesFragment = DetallesIncidenciaFragment.newInstance(inc);
                     FragmentTransaction transaction = requireActivity().getSupportFragmentManager().beginTransaction();
                     transaction.replace(R.id.nav_host_fragment_activity_main, detallesFragment);
-//                    transaction.addToBackStack(null); // Permite volver atrás con el botón de retroceso
+                    requireActivity().getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                    transaction.addToBackStack(null); // Permite volver atrás con el botón de retroceso
                     transaction.commit();
 
 

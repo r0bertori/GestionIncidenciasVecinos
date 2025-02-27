@@ -74,6 +74,9 @@ public class CrearIncidenciaFragment extends Fragment {
                 // Si existe (Sign in normal o si lo ha personalizado en 'perfil')
                 else {
                     if (camposRellenados()) {
+
+                        binding.btnCrearIncidenciaCrearIncidencia.setEnabled(false);
+
                         viewModel.getUsuarioLiveData().observe(getViewLifecycleOwner(), fullName -> {
                             String titulo = binding.etTituloCrearIncidencia.getText().toString();
                             String desc = binding.etDescripcionCrearIncidencia.getText().toString();
@@ -81,11 +84,25 @@ public class CrearIncidenciaFragment extends Fragment {
 
                             Incidencia incidencia = new Incidencia(titulo, desc, usuario, imageUri);
 
-                            viewModel.crearIncidencia(incidencia, getContext());
+                            viewModel.getCrearIncidenciaLiveData().observe(getViewLifecycleOwner(), crearIncidencia -> {
+                                if (crearIncidencia) {
 
-                            binding.etTituloCrearIncidencia.setText("");
-                            binding.etDescripcionCrearIncidencia.setText("");
-                            binding.ibImagenCrearIncidencia.setImageDrawable(null);
+                                    binding.etTituloCrearIncidencia.setText("");
+                                    binding.etDescripcionCrearIncidencia.setText("");
+                                    binding.ibImagenCrearIncidencia.setImageDrawable(null);
+
+                                    Toast.makeText(getContext(), "Incidencia creada con éxito", Toast.LENGTH_SHORT).show();
+
+                                    binding.btnCrearIncidenciaCrearIncidencia.setEnabled(true);
+
+                                } else {
+                                    Toast.makeText(getContext(), "Error al crear la incidencia", Toast.LENGTH_SHORT).show();
+
+                                    binding.btnCrearIncidenciaCrearIncidencia.setEnabled(true);
+                                }
+                            });
+
+                            viewModel.crearIncidencia(incidencia, getContext());
                         });
                     } else {
                         Toast.makeText(getContext(), "Rellene todos los campos", Toast.LENGTH_SHORT).show();

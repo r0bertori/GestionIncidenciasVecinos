@@ -65,6 +65,12 @@ public class CrearIncidenciaViewModel extends ViewModel {
 
     }
 
+    private MutableLiveData<Boolean> crearIncidenciaLiveData = new MutableLiveData<>();
+
+    public LiveData<Boolean> getCrearIncidenciaLiveData() {
+        return crearIncidenciaLiveData;
+    }
+
     public void crearIncidencia(Incidencia incidencia, Context context) {
 
         refIncidencias = FirebaseDatabase.getInstance().getReference("incidencias");
@@ -95,9 +101,9 @@ public class CrearIncidenciaViewModel extends ViewModel {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()) {
-                                    Toast.makeText(context, "Incidencia registrada", Toast.LENGTH_SHORT).show();
+                                    crearIncidenciaLiveData.postValue(true);
                                 } else {
-                                    Toast.makeText(context, "Error al registrar la incidencia", Toast.LENGTH_SHORT).show();
+                                    crearIncidenciaLiveData.postValue(false);
                                 }
                             }
                         });
@@ -108,4 +114,5 @@ public class CrearIncidenciaViewModel extends ViewModel {
         });
 
     }
+
 }

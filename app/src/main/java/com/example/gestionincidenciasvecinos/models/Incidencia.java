@@ -3,23 +3,35 @@ package com.example.gestionincidenciasvecinos.models;
 import android.net.Uri;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class Incidencia implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private String titulo, descripcion, creador, imageURL;
+    private String titulo, descripcion, creador, imageURL, estado;
+    private List<String> comentarios;
     private Uri image;
 
     public Incidencia() {
     }
 
-    // Constructor para subir a la base de datos
+    // Constructor para subir a la base de datos, sin estado ni comentarios (al crear la incidencia)
     public Incidencia(String titulo, String descripcion, String creador, String imageURL) {
         this.titulo = titulo;
         this.descripcion = descripcion;
         this.creador = creador;
         this.imageURL = imageURL;
+    }
+
+    // Constructor para subir a la base de datos (al actualizar la incidencia si eres admin)
+    public Incidencia(String titulo, String descripcion, String creador, String imageURL, String estado, List<String> comentarios) {
+        this.titulo = titulo;
+        this.descripcion = descripcion;
+        this.creador = creador;
+        this.imageURL = imageURL;
+        this.estado = estado;
+        this.comentarios = comentarios;
     }
 
     // Constructor para crear la incidencia en local
@@ -28,6 +40,22 @@ public class Incidencia implements Serializable {
         this.descripcion = descripcion;
         this.creador = creador;
         this.image = image;
+    }
+
+    public List<String> getComentarios() {
+        return comentarios;
+    }
+
+    public void setComentarios(List<String> comentarios) {
+        this.comentarios = comentarios;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 
     public String getImageURL() {

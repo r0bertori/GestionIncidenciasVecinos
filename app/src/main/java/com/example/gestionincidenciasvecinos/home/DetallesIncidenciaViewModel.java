@@ -4,14 +4,19 @@ import android.net.Uri;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.example.gestionincidenciasvecinos.models.Incidencia;
+import com.example.gestionincidenciasvecinos.models.Usuario;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -22,6 +27,7 @@ import java.util.Map;
 public class DetallesIncidenciaViewModel extends ViewModel {
 
     private DatabaseReference refIncidencias = FirebaseDatabase.getInstance().getReference("incidencias");
+    private DatabaseReference refUsuarios = FirebaseDatabase.getInstance().getReference("usuarios");
     private StorageReference storageReference = FirebaseStorage.getInstance().getReference("incidencias_images");;
     public MutableLiveData<Boolean> eliminarLiveData = new MutableLiveData<Boolean>();
 
@@ -45,6 +51,12 @@ public class DetallesIncidenciaViewModel extends ViewModel {
                     }
                 });
 
+    }
+
+    private MutableLiveData<Boolean> actualizacionLiveData = new MutableLiveData<>();
+
+    public MutableLiveData<Boolean> getActualizacionLiveData() {
+        return actualizacionLiveData;
     }
 
     public void actualizarIncidencia(Incidencia incidencia, String keyAntigua) {
@@ -84,17 +96,27 @@ public class DetallesIncidenciaViewModel extends ViewModel {
                                                     uri.toString()
                                             );
 
+                                            if (incidencia.getEstado() != null) {
+                                                nuevaIncidencia.setEstado(incidencia.getEstado());
+                                            }
+
+                                            if (incidencia.getComentarios() != null) {
+                                                nuevaIncidencia.setComentarios(incidencia.getComentarios());
+                                            }
+
                                             refIncidencias.child(keyNueva).setValue(nuevaIncidencia)
                                                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                                                         @Override
                                                         public void onSuccess(Void unused) {
                                                             Log.d("DETALLES_INCIDENCIA", "Incidencia actualizada con éxito");
+                                                            actualizacionLiveData.postValue(true);
                                                         }
                                                     })
                                                     .addOnFailureListener(new OnFailureListener() {
                                                         @Override
                                                         public void onFailure(@NonNull Exception e) {
                                                             Log.d("DETALLES_INCIDENCIA", "Error al actualizar la incidencia");
+                                                            actualizacionLiveData.postValue(false);
                                                         }
                                                     });
 
@@ -119,17 +141,27 @@ public class DetallesIncidenciaViewModel extends ViewModel {
                             incidencia.getImageURL()
                     );
 
+                    if (incidencia.getEstado() != null) {
+                        nuevaIncidencia.setEstado(incidencia.getEstado());
+                    }
+
+                    if (incidencia.getComentarios() != null) {
+                        nuevaIncidencia.setComentarios(incidencia.getComentarios());
+                    }
+
                     refIncidencias.child(keyNueva).setValue(nuevaIncidencia)
                             .addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void unused) {
                                     Log.d("DETALLES_INCIDENCIA", "Incidencia actualizada con éxito");
+                                    actualizacionLiveData.postValue(true);
                                 }
                             })
                             .addOnFailureListener(new OnFailureListener() {
                                 @Override
                                 public void onFailure(@NonNull Exception e) {
                                     Log.d("DETALLES_INCIDENCIA", "Error al actualizar la incidencia");
+                                    actualizacionLiveData.postValue(false);
                                 }
                             });
                 }
@@ -140,4 +172,28 @@ public class DetallesIncidenciaViewModel extends ViewModel {
 
     }
 
+    private MutableLiveData<Boolean> esAdminLiveData = new MutableLiveData<>();
+
+    public LiveData<Boolean> getEsAdminLiveData() {
+        return esAdminLiveData;
+    }
+
+    public void getEsAdmin(String id) {
+        refUsuarios.child(id).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    boolean esAdmin = snapshot.getValue(Usuario.class).getEsAdmin();
+                    esAdminLiveData.postValue(esAdmin);
+                } else {
+                    esAdminLiveData.postValue(false);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
 }

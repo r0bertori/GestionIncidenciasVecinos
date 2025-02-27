@@ -28,84 +28,157 @@
             android:textColor="@color/white"
             android:textStyle="bold"/>
 
-        <TextView
-            android:id="@+id/tvTituloDetallesIncidencia"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="@dimen/margin_mediano"
-            android:text="Titulo"
-            android:textSize="@dimen/txt_subTitulo"
-            android:textColor="@color/color_principal"
-            android:textStyle="bold"/>
-
-        <EditText
-            android:id="@+id/etTituloDetallesIncidencia"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvTituloDetallesIncidencia"
-            android:layout_marginTop="@dimen/margin_pequenio"
-            android:background="@drawable/et_borde_login"/>
-
-        <TextView
-            android:id="@+id/tvImagenDetallesIncidencia"
+        <ScrollView
+            android:id="@+id/svContenidoDetallesIncidencia"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="650dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etTituloDetallesIncidencia"
-            android:layout_marginTop="@dimen/margin_mediano"
-            android:text="Imagen :"
-            android:textSize="@dimen/txt_texto"
-            android:textColor="@color/color_principal"
-            android:textStyle="bold"/>
+            app:layout_constraintTop_toTopOf="parent">
 
-        <ImageButton
-            android:id="@+id/ibImagenDetallesIncidencia"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvImagenDetallesIncidencia"
-            android:layout_marginTop="@dimen/margin_pequenio"/>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/tvDescripcionDetallesIncidencia"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/ibImagenDetallesIncidencia"
-            android:layout_marginTop="@dimen/margin_mediano"
-            android:text="Descripción :"
-            android:textSize="@dimen/txt_texto"
-            android:textColor="@color/color_principal"
-            android:textStyle="bold"/>
+                <TextView
+                    android:id="@+id/tvTituloDetallesIncidencia"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginTop="@dimen/margin_mediano"
+                    android:text="Titulo"
+                    android:textSize="@dimen/txt_texto"
+                    android:textColor="@color/color_principal"
+                    android:textStyle="bold"/>
 
-        <EditText
-            android:id="@+id/etDescripcionDetallesIncidencia"
-            android:layout_width="0dp"
-            android:layout_height="150dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvDescripcionDetallesIncidencia"
-            android:layout_marginTop="@dimen/margin_pequenio"
-            android:background="@drawable/et_borde_login"
-            android:gravity="top"/>
+                <EditText
+                    android:id="@+id/etTituloDetallesIncidencia"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvTituloDetallesIncidencia"
+                    android:layout_marginTop="@dimen/margin_pequenio"
+                    android:background="@drawable/et_borde_login"/>
 
-        <TextView
-            android:id="@+id/tvUsuarioDetallesIncidencia"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="@dimen/margin_mediano"
-            app:layout_constraintTop_toBottomOf="@id/etDescripcionDetallesIncidencia"
-            android:text="Usuario creador"
-            android:textColor="@color/color_principal"
-            android:textSize="@dimen/txt_texto"/>
+                <TextView
+                    android:id="@+id/tvImagenDetallesIncidencia"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/etTituloDetallesIncidencia"
+                    android:layout_marginTop="@dimen/margin_mediano"
+                    android:text="Imagen :"
+                    android:textSize="@dimen/txt_texto"
+                    android:textColor="@color/color_principal"
+                    android:textStyle="bold"/>
+
+                <ImageButton
+                    android:id="@+id/ibImagenDetallesIncidencia"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvImagenDetallesIncidencia"
+                    android:layout_marginTop="@dimen/margin_pequenio"/>
+
+                <TextView
+                    android:id="@+id/tvDescripcionDetallesIncidencia"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/ibImagenDetallesIncidencia"
+                    android:layout_marginTop="@dimen/margin_mediano"
+                    android:text="Descripción :"
+                    android:textSize="@dimen/txt_texto"
+                    android:textColor="@color/color_principal"
+                    android:textStyle="bold"/>
+
+                <EditText
+                    android:id="@+id/etDescripcionDetallesIncidencia"
+                    android:layout_width="0dp"
+                    android:layout_height="100dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvDescripcionDetallesIncidencia"
+                    android:layout_marginTop="@dimen/margin_pequenio"
+                    android:background="@drawable/et_borde_login"
+                    android:gravity="top"/>
+
+                <TextView
+                    android:id="@+id/tvEstadoDetallesIncidencia"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/etDescripcionDetallesIncidencia"
+                    android:layout_marginTop="@dimen/margin_mediano"
+                    android:text="Estado :"
+                    android:textSize="@dimen/txt_texto"
+                    android:textColor="@color/color_principal"
+                    android:textStyle="bold"/>
+
+                <Spinner
+                    android:id="@+id/spnrEstadoDetallesIncidencia"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvEstadoDetallesIncidencia"
+                    android:entries="@array/spinner_items"/>
+
+                <TextView
+                    android:id="@+id/tvComentariosDetallesIncidencia"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/spnrEstadoDetallesIncidencia"
+                    android:layout_marginTop="@dimen/margin_mediano"
+                    android:text="Añadir comentarios :"
+                    android:textSize="@dimen/txt_texto"
+                    android:textColor="@color/color_principal"
+                    android:textStyle="bold"/>
+
+                <LinearLayout
+                    android:id="@+id/llComentariosDetallesIncidencia"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:orientation="vertical"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvComentariosDetallesIncidencia"/>
+
+                <Button
+                    android:id="@+id/btnAniadirComentarioDetallesIncidencia"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginTop="@dimen/margin_pequenio"
+                    app:layout_constraintTop_toBottomOf="@id/llComentariosDetallesIncidencia"
+                    android:background="@drawable/btn_bordes_redondeados"
+                    android:text="+"
+                    android:textSize="@dimen/txt_subTitulo"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/tvUsuarioDetallesIncidencia"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginTop="@dimen/margin_mediano"
+                    app:layout_constraintTop_toBottomOf="@id/btnAniadirComentarioDetallesIncidencia"
+                    android:text="Usuario creador"
+                    android:textColor="@color/color_principal"
+                    android:textSize="@dimen/txt_texto"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </ScrollView>
 
         <Button
             android:id="@+id/btnGuardarDatosDetallesIncidencia"
@@ -113,7 +186,7 @@
             android:layout_height="50dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvUsuarioDetallesIncidencia"
+            app:layout_constraintTop_toBottomOf="@id/svContenidoDetallesIncidencia"
             android:layout_marginTop="@dimen/margin_mediano"
             android:background="@drawable/btn_bordes_redondeados"
             android:text="Guardar cambios"
