@@ -11,13 +11,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
+import com.example.gestionincidenciasvecinos.models.Usuario;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -128,7 +125,7 @@ public class RegistroActivity extends AppCompatActivity {
     }
 
     private void registrarUsuario(Usuario usuario) {
-        mAuth.createUserWithEmailAndPassword(usuario.getCorreo(), usuario.getCorreo())
+        mAuth.createUserWithEmailAndPassword(usuario.getCorreo(), usuario.getPwd())
                 .addOnCompleteListener(RegistroActivity.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {

@@ -138,8 +138,8 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                String correo = etCorreoLogin.getText().toString();
-                String pwd = etPwdLogin.getText().toString();
+                String correo = etCorreoLogin.getText().toString().trim();
+                String pwd = etPwdLogin.getText().toString().trim();
 
                 if (!correo.isEmpty()) {
 

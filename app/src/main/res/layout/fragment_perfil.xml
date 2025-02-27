@@ -16,7 +16,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:text="¡Hola!"
-        android:textSize="30sp"
+        android:textSize="@dimen/txt_titulo"
         android:textColor="@color/color_principal"
         android:textStyle="bold"/>
 
@@ -27,8 +27,9 @@
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvSaludo"
+        android:layout_marginTop="@dimen/margin_grande"
         android:text="Tus datos :"
-        android:textSize="18sp"
+        android:textSize="@dimen/txt_subTitulo"
         android:textColor="@color/color_principal"
         android:textStyle="bold"/>
 
@@ -37,11 +38,141 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvTusDatos">
+        app:layout_constraintTop_toBottomOf="@id/tvTusDatos"
+        android:layout_marginTop="@dimen/margin_mediano">
 
+        <TextView
+            android:id="@+id/tvNombrePerfil"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nombre :"
+            android:textSize="@dimen/txt_texto"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/etNombrePerfil"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/texto_hints"
+            android:hint="Introduce tu nombre"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvNombrePerfil"
+            android:background="@drawable/et_borde_login"/>
+
+        <TextView
+            android:id="@+id/tvApellidosPerfil"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Apellidos :"
+            android:textSize="@dimen/txt_texto"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/etNombrePerfil"
+            android:layout_marginTop="@dimen/margin_mediano"/>
+
+        <EditText
+            android:id="@+id/etApellidosPerfil"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/texto_hints"
+            android:hint="Introduce tus apellidos"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvApellidosPerfil"
+            android:background="@drawable/et_borde_login"/>
+
+        <TextView
+            android:id="@+id/tvPisoLetra"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Piso y letra :"
+            android:textSize="@dimen/txt_texto"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/etApellidosPerfil"
+            android:layout_marginTop="@dimen/margin_mediano"/>
+
+        <EditText
+            android:id="@+id/etPisoLetra"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/texto_hints"
+            android:hint="Ej: 3B"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvPisoLetra"
+            android:background="@drawable/et_borde_login"/>
+
+        <TextView
+            android:id="@+id/tvTelefonoPerfil"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Teléfono :"
+            android:textSize="@dimen/txt_texto"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/etPisoLetra"
+            android:layout_marginTop="@dimen/margin_mediano"/>
+
+        <EditText
+            android:id="@+id/etTelefonoPerfil"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/texto_hints"
+            android:hint="Introduce tu teléfono"
+            android:inputType="phone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvTelefonoPerfil"
+            android:background="@drawable/et_borde_login"/>
+
+        <TextView
+            android:id="@+id/tvTipoCuentaPerfil"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tipo de cuenta : "
+            android:textSize="@dimen/txt_texto"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/etTelefonoPerfil"
+            android:layout_marginTop="@dimen/margin_mediano"/>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Button
+        android:id="@+id/btnGuardarCambiosPerfil"
+        android:layout_width="150dp"
+        android:layout_height="60dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/clDatosUsuario"
+        android:background="@drawable/btn_bordes_redondeados"
+        android:text="Guardar cambios"
+        android:textSize="@dimen/txt_texto"
+        android:textColor="@color/white"
+        android:layout_marginTop="@dimen/margin_grande"/>
+
+    <Button
+        android:id="@+id/btnCerrarSesionPerfil"
+        android:layout_width="250dp"
+        android:layout_height="60dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnGuardarCambiosPerfil"
+        android:layout_marginTop="@dimen/margin_grande"
+        android:background="@drawable/btn_bordes_redondeados"
+        android:backgroundTint="@color/mensaje_error"
+        android:text="Cerrar sesión"
+        android:textSize="@dimen/txt_texto"
+        android:textColor="@color/white"
+        android:textStyle="bold"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

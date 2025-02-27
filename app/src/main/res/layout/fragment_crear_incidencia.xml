@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:padding="@dimen/margin_grande"
+    tools:context=".crearIncidencia.CrearIncidenciaFragment">
+
+    <TextView
+        android:id="@+id/tvCrearIncidenciaCrearIncidencia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="Crear incidencia"
+        android:textSize="@dimen/txt_titulo"
+        android:textColor="@color/color_principal"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/tvTituloCrearIncidencia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvCrearIncidenciaCrearIncidencia"
+        android:layout_marginTop="@dimen/margin_grande"
+        android:text="Título :"
+        android:textSize="@dimen/txt_texto"
+        android:textColor="@color/black"/>
+
+    <EditText
+        android:id="@+id/etTituloCrearIncidencia"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTituloCrearIncidencia"
+        android:textColor="@color/black"
+        android:textColorHint="@color/texto_hints"
+        android:hint="Introduce el título"
+        android:background="@drawable/et_borde_login"/>
+
+    <TextView
+        android:id="@+id/tvDescripcionCrearIncidencia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/etTituloCrearIncidencia"
+        android:layout_marginTop="@dimen/margin_mediano"
+        android:text="Descripción :"
+        android:textSize="@dimen/txt_texto"
+        android:textColor="@color/black"/>
+
+    <EditText
+        android:id="@+id/etDescripcionCrearIncidencia"
+        android:layout_width="0dp"
+        android:layout_height="150dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvDescripcionCrearIncidencia"
+        android:textColor="@color/black"
+        android:textColorHint="@color/texto_hints"
+        android:hint="Introduce la descripción"
+        android:background="@drawable/et_borde_login"
+        android:gravity="top"/>
+
+    <TextView
+        android:id="@+id/tvImagenCrearIncidencia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/etDescripcionCrearIncidencia"
+        android:layout_marginTop="@dimen/margin_mediano"
+        android:text="Imagen :"
+        android:textSize="@dimen/txt_texto"
+        android:textColor="@color/black"/>
+    
+    <ImageButton
+        android:id="@+id/ibImagenCrearIncidencia"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvImagenCrearIncidencia"
+        android:layout_marginBottom="@dimen/margin_mediano"
+        />
+    
+    <Button
+        android:id="@+id/btnCrearIncidenciaCrearIncidencia"
+        android:layout_width="200dp"
+        android:layout_height="80dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvImagenCrearIncidencia"
+        android:layout_marginTop="220dp"
+        android:background="@drawable/btn_bordes_redondeados"
+        android:text="Crear incidencia"
+        android:textColor="@color/white"
+        android:textSize="@dimen/txt_texto"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

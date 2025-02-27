@@ -1,6 +1,9 @@
 package com.example.gestionincidenciasvecinos;
 
+import android.graphics.Color;
 import android.os.Bundle;
+import android.view.Window;
+import android.view.WindowManager;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
@@ -18,6 +21,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        getWindow().setStatusBarColor(Color.BLACK);
+
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());

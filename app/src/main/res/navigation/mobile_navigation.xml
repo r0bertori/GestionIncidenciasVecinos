@@ -13,9 +13,9 @@
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="com.example.gestionincidenciasvecinos.dashboard.DashboardFragment"
+        android:name="com.example.gestionincidenciasvecinos.crearIncidencia.CrearIncidenciaFragment"
         android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_crear_incidencia" />
 
     <fragment
         android:id="@+id/navigation_profile"

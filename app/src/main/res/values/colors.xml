@@ -9,5 +9,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="color_principal">#17A398</color>
     <color name="texto_desapercibido">#CECECE</color>
-    <color name="mensaje_error">#FF0000</color>
+    <color name="verde">#32CD32</color>
+    <color name="mensaje_error">#CC0000</color>
+    <color name="texto_hints">#656565</color>
 </resources>

@@ -1,16 +1,16 @@
-package com.example.gestionincidenciasvecinos;
+package com.example.gestionincidenciasvecinos.models;
 
 public class Usuario {
 
     private String id, correo, pwd, nombreApellidos, pisoLetra, numTelefono;
     private boolean esAdmin;
 
-    public Usuario(String id, String correo, String pwd, boolean esAdmin) {
-        this.id = id;
-        this.correo = correo;
-        this.pwd = pwd;
-        this.esAdmin = esAdmin;
-    }
+//    public Usuario(String id, String correo, String pwd, boolean esAdmin) {
+//        this.id = id;
+//        this.correo = correo;
+//        this.pwd = pwd;
+//        this.esAdmin = esAdmin;
+//    }
 
     public Usuario(String correo, String pwd, String nombreApellidos, String pisoLetra, String numTelefono) {
         this.correo = correo;
@@ -19,6 +19,10 @@ public class Usuario {
         this.pisoLetra = pisoLetra;
         this.numTelefono = numTelefono;
         this.esAdmin = false;
+    }
+
+    // Constructor vacío
+    public Usuario() {
     }
 
     public String getId() {
@@ -69,7 +73,7 @@ public class Usuario {
         this.correo = correo;
     }
 
-    public boolean isEsAdmin() {
+    public boolean getEsAdmin() {
         return esAdmin;
     }
 
