@@ -77,6 +77,8 @@ public class CrearIncidenciaFragment extends Fragment {
 
                         binding.btnCrearIncidenciaCrearIncidencia.setEnabled(false);
 
+                        binding.pbCrearIncidencia.setVisibility(View.VISIBLE);
+
                         viewModel.getUsuarioLiveData().observe(getViewLifecycleOwner(), fullName -> {
                             String titulo = binding.etTituloCrearIncidencia.getText().toString();
                             String desc = binding.etDescripcionCrearIncidencia.getText().toString();
@@ -95,10 +97,15 @@ public class CrearIncidenciaFragment extends Fragment {
 
                                     binding.btnCrearIncidenciaCrearIncidencia.setEnabled(true);
 
+                                    binding.pbCrearIncidencia.setVisibility(View.GONE);
+
                                 } else {
                                     Toast.makeText(getContext(), "Error al crear la incidencia", Toast.LENGTH_SHORT).show();
 
                                     binding.btnCrearIncidenciaCrearIncidencia.setEnabled(true);
+
+                                    binding.pbCrearIncidencia.setVisibility(View.GONE);
+
                                 }
                             });
 

@@ -176,8 +176,14 @@ public class DetallesIncidenciaFragment extends Fragment {
                                         Toast.makeText(getContext(), "Error al eliminar la incidencia", Toast.LENGTH_SHORT).show();
                                     }
                                 });
-                                
-                                viewModel.eliminarIncidencia(key, hvm, userEsAdmin, id);
+
+                                viewModel.getUserNameLiveData().observe(getViewLifecycleOwner(), nomUsu -> {
+
+                                    viewModel.eliminarIncidencia(key, hvm, userEsAdmin, nomUsu);
+
+                                });
+
+                                viewModel.getUserName(id);
                             }
                         })
                         .setNegativeButton("No", null)
@@ -243,6 +249,8 @@ public class DetallesIncidenciaFragment extends Fragment {
 
                 binding.btnGuardarDatosDetallesIncidencia.setEnabled(false);
 
+                binding.pbDetallesIncidencia.setVisibility(View.VISIBLE);
+
                 Incidencia nuevaIncidencia;
 
                 if (imageUri != null) {
@@ -289,10 +297,15 @@ public class DetallesIncidenciaFragment extends Fragment {
                         if (actualizacion) {
                             Toast.makeText(getContext(), "Incidencia actualizada", Toast.LENGTH_SHORT).show();
                             binding.btnGuardarDatosDetallesIncidencia.setEnabled(true);
+
+                            binding.pbDetallesIncidencia.setVisibility(View.VISIBLE);
+
                             cerrarVentana();
                         } else {
                             Toast.makeText(getContext(), "Error al actualizar la incidencia", Toast.LENGTH_SHORT).show();
                             binding.btnGuardarDatosDetallesIncidencia.setEnabled(true);
+
+                            binding.pbDetallesIncidencia.setVisibility(View.VISIBLE);
                         }
                     });
 

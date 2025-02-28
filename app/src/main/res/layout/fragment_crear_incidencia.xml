@@ -102,4 +102,15 @@
         android:textColor="@color/white"
         android:textSize="@dimen/txt_texto"/>
 
+    <ProgressBar
+        android:id="@+id/pbCrearIncidencia"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:visibility="gone"
+        android:indeterminateTint="@color/color_principal"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
