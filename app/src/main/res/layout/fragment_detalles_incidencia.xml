@@ -23,7 +23,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:background="@drawable/btn_bordes_redondeados"
-            android:text="x"
+            android:text="@string/detalles_incidencia_boton_cerrar"
             android:textSize="@dimen/txt_texto"
             android:textColor="@color/white"
             android:textStyle="bold"/>
@@ -47,7 +47,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     android:layout_marginTop="@dimen/margin_mediano"
-                    android:text="Titulo"
+                    android:text="@string/detalles_incidencia_titulo"
                     android:textSize="@dimen/txt_texto"
                     android:textColor="@color/color_principal"
                     android:textStyle="bold"/>
@@ -71,7 +71,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/etTituloDetallesIncidencia"
                     android:layout_marginTop="@dimen/margin_mediano"
-                    android:text="Imagen :"
+                    android:text="@string/detalles_incidencia_imagen"
                     android:textSize="@dimen/txt_texto"
                     android:textColor="@color/color_principal"
                     android:textStyle="bold"/>
@@ -94,7 +94,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/ibImagenDetallesIncidencia"
                     android:layout_marginTop="@dimen/margin_mediano"
-                    android:text="Descripción :"
+                    android:text="@string/detalles_incidencia_descripcion"
                     android:textSize="@dimen/txt_texto"
                     android:textColor="@color/color_principal"
                     android:textStyle="bold"/>
@@ -118,7 +118,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/etDescripcionDetallesIncidencia"
                     android:layout_marginTop="@dimen/margin_mediano"
-                    android:text="Estado :"
+                    android:text="@string/detalles_incidencia_estado"
                     android:textSize="@dimen/txt_texto"
                     android:textColor="@color/color_principal"
                     android:textStyle="bold"/>
@@ -140,7 +140,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/spnrEstadoDetallesIncidencia"
                     android:layout_marginTop="@dimen/margin_mediano"
-                    android:text="Añadir comentarios :"
+                    android:text="@string/detalles_incidencia_aniadir_comentarios"
                     android:textSize="@dimen/txt_texto"
                     android:textColor="@color/color_principal"
                     android:textStyle="bold"/>
@@ -162,7 +162,7 @@
                     android:layout_marginTop="@dimen/margin_pequenio"
                     app:layout_constraintTop_toBottomOf="@id/llComentariosDetallesIncidencia"
                     android:background="@drawable/btn_bordes_redondeados"
-                    android:text="+"
+                    android:text="@string/detalles_incidencia_btn_aniadir_comentarios"
                     android:textSize="@dimen/txt_subTitulo"
                     android:textColor="@color/white"
                     android:textStyle="bold"/>
@@ -174,7 +174,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     android:layout_marginTop="@dimen/margin_mediano"
                     app:layout_constraintTop_toBottomOf="@id/btnAniadirComentarioDetallesIncidencia"
-                    android:text="Usuario creador"
+                    android:text="@string/detalles_incidencia_usuario_creador"
                     android:textColor="@color/color_principal"
                     android:textSize="@dimen/txt_texto"/>
 
@@ -191,7 +191,7 @@
             app:layout_constraintTop_toBottomOf="@id/svContenidoDetallesIncidencia"
             android:layout_marginTop="@dimen/margin_mediano"
             android:background="@drawable/btn_bordes_redondeados"
-            android:text="Guardar cambios"
+            android:text="@string/detalles_incidencia_guardar_cambios"
             android:textSize="@dimen/txt_texto"
             android:textColor="@color/white"
             android:textStyle="bold"/>

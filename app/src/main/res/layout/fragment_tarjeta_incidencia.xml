@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:text="Título de la incidencia"
+            android:text="@string/tarjeta_incidencia_titulo_incidencia"
             android:textSize="@dimen/txt_subTitulo"
             android:textColor="@color/color_principal"
             android:textStyle="bold"/>
@@ -44,7 +44,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="@dimen/margin_mediano"
             app:layout_constraintTop_toBottomOf="@id/tvTituloTarjetaIncidencia"
-            android:text="Creador de la incidencia"
+            android:text="@string/tarjeta_incidencia_creador_incidencia"
             android:textColor="@color/color_principal"
             android:textSize="@dimen/txt_texto"
             android:visibility="gone"/>

@@ -15,7 +15,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:text="Crear incidencia"
+        android:text="@string/crear_incidencia_titulo"
         android:textSize="@dimen/txt_titulo"
         android:textColor="@color/color_principal"
         android:textStyle="bold"/>
@@ -27,7 +27,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvCrearIncidenciaCrearIncidencia"
         android:layout_marginTop="@dimen/margin_grande"
-        android:text="Título :"
+        android:text="@string/crear_incidencia_tv_titulo"
         android:textSize="@dimen/txt_texto"
         android:textColor="@color/black"/>
 
@@ -40,7 +40,7 @@
         app:layout_constraintTop_toBottomOf="@id/tvTituloCrearIncidencia"
         android:textColor="@color/black"
         android:textColorHint="@color/texto_hints"
-        android:hint="Introduce el título"
+        android:hint="@string/crear_incidencia_introduce_titulo"
         android:background="@drawable/et_borde_login"
         android:singleLine="true"/>
 
@@ -51,7 +51,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/etTituloCrearIncidencia"
         android:layout_marginTop="@dimen/margin_mediano"
-        android:text="Descripción :"
+        android:text="@string/crear_incidencia_descripcion"
         android:textSize="@dimen/txt_texto"
         android:textColor="@color/black"/>
 
@@ -64,7 +64,7 @@
         app:layout_constraintTop_toBottomOf="@id/tvDescripcionCrearIncidencia"
         android:textColor="@color/black"
         android:textColorHint="@color/texto_hints"
-        android:hint="Introduce la descripción"
+        android:hint="@string/crear_incidencia_introduce_descripcion"
         android:background="@drawable/et_borde_login"
         android:gravity="top"/>
 
@@ -75,7 +75,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/etDescripcionCrearIncidencia"
         android:layout_marginTop="@dimen/margin_mediano"
-        android:text="Imagen :"
+        android:text="@string/crear_incidencia_imagen"
         android:textSize="@dimen/txt_texto"
         android:textColor="@color/black"/>
     
@@ -98,7 +98,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tvImagenCrearIncidencia"
         android:layout_marginTop="220dp"
         android:background="@drawable/btn_bordes_redondeados"
-        android:text="Crear incidencia"
+        android:text="@string/crear_incidencia_crear_incidencia"
         android:textColor="@color/white"
         android:textSize="@dimen/txt_texto"/>
 
