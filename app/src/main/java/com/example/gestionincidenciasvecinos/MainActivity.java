@@ -2,9 +2,6 @@ package com.example.gestionincidenciasvecinos;
 
 import android.graphics.Color;
 import android.os.Bundle;
-import android.view.Window;
-import android.view.WindowManager;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -24,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
 
         getWindow().setStatusBarColor(Color.BLACK);
 
-
+        BottomNavigationView bottomNavigationView = findViewById(R.id.nav_view);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 

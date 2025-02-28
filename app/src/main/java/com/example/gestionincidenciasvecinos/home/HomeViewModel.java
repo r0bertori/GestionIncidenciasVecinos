@@ -14,6 +14,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -57,40 +58,42 @@ public class HomeViewModel extends ViewModel {
 
     }
 
-    // Obtener incidencias
+    // Obtener lista de incidencias
     private MutableLiveData<List<Incidencia>> incidenciasLiveData = new MutableLiveData<>();
 
     public LiveData<List<Incidencia>> getIncidenciasLiveData() {
         return incidenciasLiveData;
     }
 
-        // Obtener incidencias por usuario
+    // Obtener incidencias de un usuario
     public void getIncidenciasPorUsuario(String usuario) {
 
-        refIncidencias.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists() && snapshot.hasChildren()) {
-                    List<Incidencia> incidencias = new ArrayList<>();
-                    for (DataSnapshot incidenciaSnapshot : snapshot.getChildren()) {
-                        Incidencia incidencia = incidenciaSnapshot.getValue(Incidencia.class);
-                        if (incidencia.getCreador().equals(usuario)) {
-                            incidencias.add(incidencia);
-                        }
-                    }
-                    incidenciasLiveData.postValue(incidencias);
-                }
-            }
+        Log.d("PRUEBAS", "Entra al método");
 
+        refIncidencias.get().addOnSuccessListener(new OnSuccessListener<DataSnapshot>() {
             @Override
-            public void onCancelled(@NonNull DatabaseError error) {
+            public void onSuccess(DataSnapshot snapshot) {
+
+                List<Incidencia> incidencias = new ArrayList<>();
+
+                for (DataSnapshot incidencia : snapshot.getChildren()) {
+                    Incidencia inc = incidencia.getValue(Incidencia.class);
+
+                    if (inc.getCreador().equals(usuario)) {
+                        incidencias.add(inc);
+                    }
+                }
+
+                Log.d("PRUEBAS", "Cantidad de incidencias de " + usuario + ": " + String.valueOf(incidencias.size()));
+
+                incidenciasLiveData.postValue(incidencias);
 
             }
         });
 
     }
 
-        // Obtener todas las incidencias
+    // Obtener todas las incidencias
     public void getTodasIncidencias() {
 
         List<Incidencia> incidencias = new ArrayList<>();
@@ -104,6 +107,24 @@ public class HomeViewModel extends ViewModel {
                 incidenciasLiveData.postValue(incidencias);
             }
         });
+
+//        refIncidencias.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                List<Incidencia> incidencias = new ArrayList<>();
+//
+//                for (DataSnapshot incidencia : snapshot.getChildren()) {
+//                    incidencias.add(incidencia.getValue(Incidencia.class));
+//                }
+//
+//                incidenciasLiveData.postValue(incidencias);
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//
+//            }
+//        });
 
     }
 

@@ -41,7 +41,8 @@
         android:textColor="@color/black"
         android:textColorHint="@color/texto_hints"
         android:hint="Introduce el título"
-        android:background="@drawable/et_borde_login"/>
+        android:background="@drawable/et_borde_login"
+        android:singleLine="true"/>
 
     <TextView
         android:id="@+id/tvDescripcionCrearIncidencia"
@@ -86,7 +87,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvImagenCrearIncidencia"
         android:layout_marginBottom="@dimen/margin_mediano"
-        />
+        android:scaleType="fitCenter"/>
     
     <Button
         android:id="@+id/btnCrearIncidenciaCrearIncidencia"

@@ -52,7 +52,12 @@ public class HomeFragment extends Fragment {
         // No se ejecuta hasta que obtengamos al usuario actual (y si es admin o no)
         viewModel.getIncidenciasLiveData().observe(getViewLifecycleOwner(), incidencias -> {
             limpiarFragmentos();
-            crearFragments(incidencias);
+            if (incidencias.isEmpty()) {
+                binding.tvNoIncidenciasHome.setVisibility(View.VISIBLE);
+            } else {
+                binding.tvNoIncidenciasHome.setVisibility(View.GONE);
+                crearFragments(incidencias);
+            }
         });
 
         // Obtener al usuario actual (y si es admin)

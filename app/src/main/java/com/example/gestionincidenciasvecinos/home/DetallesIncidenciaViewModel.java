@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.example.gestionincidenciasvecinos.models.Incidencia;
 import com.example.gestionincidenciasvecinos.models.Usuario;
@@ -21,7 +22,9 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class DetallesIncidenciaViewModel extends ViewModel {
@@ -29,19 +32,25 @@ public class DetallesIncidenciaViewModel extends ViewModel {
     private DatabaseReference refIncidencias = FirebaseDatabase.getInstance().getReference("incidencias");
     private DatabaseReference refUsuarios = FirebaseDatabase.getInstance().getReference("usuarios");
     private StorageReference storageReference = FirebaseStorage.getInstance().getReference("incidencias_images");;
+
     public MutableLiveData<Boolean> eliminarLiveData = new MutableLiveData<Boolean>();
 
     public MutableLiveData<Boolean> getEliminarLiveData() {
         return eliminarLiveData;
     }
 
-    public void eliminarIncidencia(String key) {
+    public void eliminarIncidencia(String key, HomeViewModel hvm, boolean esAdmin, String idUsuario) {
 
         refIncidencias.child(key).removeValue()
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void unused) {
                         eliminarLiveData.postValue(true);
+                        if (esAdmin) {
+                            hvm.getTodasIncidencias();
+                        } else {
+                            hvm.getIncidenciasPorUsuario(idUsuario);
+                        }
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -59,7 +68,7 @@ public class DetallesIncidenciaViewModel extends ViewModel {
         return actualizacionLiveData;
     }
 
-    public void actualizarIncidencia(Incidencia incidencia, String keyAntigua) {
+    public void actualizarIncidencia(Incidencia incidencia, String keyAntigua, HomeViewModel hvm, boolean esAdmin, String idUsuario) {
 
         Uri imageUri = incidencia.getImage();
         String keyNueva = (incidencia.getTitulo() + incidencia.getCreador()).replace(" ", "");
@@ -69,6 +78,8 @@ public class DetallesIncidenciaViewModel extends ViewModel {
             @Override
             public void onSuccess(Void unused) {
                 Log.d("DETALLES_INCIDENCIA", "Incidencia antigua removida");
+
+                // Si se actualiza la imagen
                 if (imageUri != null) {
                     Log.d("DETALLES_INCIDENCIA", "Existe una nueva imagen");
                     StorageReference imageAntiguaRef = storageReference.child(keyAntigua + ".jpg"); // Referencia de la imagen antigua en Storage
@@ -110,6 +121,14 @@ public class DetallesIncidenciaViewModel extends ViewModel {
                                                         public void onSuccess(Void unused) {
                                                             Log.d("DETALLES_INCIDENCIA", "Incidencia actualizada con éxito");
                                                             actualizacionLiveData.postValue(true);
+                                                            Log.d("PRUEBAS", "ESADMIN: " + esAdmin);
+                                                            Log.d("PRUEBAS", "ID: " + idUsuario);
+                                                            if (esAdmin) {
+                                                                hvm.getTodasIncidencias();
+                                                            } else {
+                                                                hvm.getIncidenciasPorUsuario(idUsuario);
+                                                            }
+
                                                         }
                                                     })
                                                     .addOnFailureListener(new OnFailureListener() {
@@ -132,6 +151,7 @@ public class DetallesIncidenciaViewModel extends ViewModel {
 
                 }
 
+                // Si no se actualiza la imagen
                 else {
 
                     Incidencia nuevaIncidencia = new Incidencia(
@@ -155,6 +175,12 @@ public class DetallesIncidenciaViewModel extends ViewModel {
                                 public void onSuccess(Void unused) {
                                     Log.d("DETALLES_INCIDENCIA", "Incidencia actualizada con éxito");
                                     actualizacionLiveData.postValue(true);
+                                    if (esAdmin) {
+                                        hvm.getTodasIncidencias();
+                                    } else {
+                                        Log.d("PRUEBAS", "El usuario " + idUsuario + " no es admin");
+                                        hvm.getIncidenciasPorUsuario(idUsuario);
+                                    }
                                 }
                             })
                             .addOnFailureListener(new OnFailureListener() {
@@ -196,4 +222,27 @@ public class DetallesIncidenciaViewModel extends ViewModel {
             }
         });
     }
+
+    private MutableLiveData<String> userNameLiveData = new MutableLiveData<>();
+
+    public MutableLiveData<String> getUserNameLiveData() {
+        return userNameLiveData;
+    }
+
+    public void getUserName(String id) {
+
+        refUsuarios.get().addOnSuccessListener(new OnSuccessListener<DataSnapshot>() {
+            @Override
+            public void onSuccess(DataSnapshot snapshot) {
+                for (DataSnapshot usuarioSnapshot : snapshot.getChildren()) {
+                    Usuario user = usuarioSnapshot.getValue(Usuario.class);
+                    if (usuarioSnapshot.getKey().equals(id)) {
+                        userNameLiveData.postValue(user.getNombreApellidos());
+                    }
+                }
+            }
+        });
+
+    }
+
 }

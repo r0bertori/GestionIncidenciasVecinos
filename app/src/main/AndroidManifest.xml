@@ -17,8 +17,14 @@
             android:value="AIzaSyDEZbKvQsSSItlhnxnsOSVhMjl1mwOecFc" />
         <activity
             android:name=".MainActivity"
-            android:exported="false"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+            android:exported="true"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:windowSoftInputMode="adjustPan"> <!-- Hacer que la BottomNavigationBar no se suba encima del teclado -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".RegistroActivity"
             android:exported="false"

@@ -61,7 +61,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvNombrePerfil"
-            android:background="@drawable/et_borde_login"/>
+            android:background="@drawable/et_borde_login"
+            android:singleLine="true"/>
 
         <TextView
             android:id="@+id/tvApellidosPerfil"
@@ -84,7 +85,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvApellidosPerfil"
-            android:background="@drawable/et_borde_login"/>
+            android:background="@drawable/et_borde_login"
+            android:singleLine="true"/>
 
         <TextView
             android:id="@+id/tvPisoLetra"
@@ -107,7 +109,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvPisoLetra"
-            android:background="@drawable/et_borde_login"/>
+            android:background="@drawable/et_borde_login"
+            android:singleLine="true"/>
 
         <TextView
             android:id="@+id/tvTelefonoPerfil"
@@ -131,7 +134,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvTelefonoPerfil"
-            android:background="@drawable/et_borde_login"/>
+            android:background="@drawable/et_borde_login"
+            android:singleLine="true"/>
 
         <TextView
             android:id="@+id/tvTipoCuentaPerfil"

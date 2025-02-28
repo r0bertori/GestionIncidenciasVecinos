@@ -70,7 +70,6 @@ public class TarjetaIncidenciaFragment extends Fragment {
                     transaction.addToBackStack(null); // Permite volver atrás con el botón de retroceso
                     transaction.commit();
 
-
                 });
 
                 viewModel.getIncidencia(titulo, creador);

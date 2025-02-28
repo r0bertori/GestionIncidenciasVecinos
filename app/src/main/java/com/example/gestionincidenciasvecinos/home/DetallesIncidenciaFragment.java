@@ -55,6 +55,8 @@ public class DetallesIncidenciaFragment extends Fragment {
     private FirebaseAuth mAuth;
     private List<String> comentarios;
     private boolean userEsAdmin;
+    private HomeViewModel hvm;
+    private String userName;
 
     public static DetallesIncidenciaFragment newInstance(Incidencia inc) {
         DetallesIncidenciaFragment fragment = new DetallesIncidenciaFragment();
@@ -77,6 +79,8 @@ public class DetallesIncidenciaFragment extends Fragment {
         viewModel = new ViewModelProvider(requireActivity()).get(DetallesIncidenciaViewModel.class);
         incidencia = (Incidencia) getArguments().getSerializable("incidencia");
         mAuth = FirebaseAuth.getInstance();
+        hvm = new ViewModelProvider(requireActivity()).get(HomeViewModel.class);
+
         if (incidencia.getComentarios() == null) {
             comentarios = new ArrayList<>();
         } else {
@@ -164,8 +168,8 @@ public class DetallesIncidenciaFragment extends Fragment {
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 String key = (incidencia.getTitulo() + incidencia.getCreador()).replace(" ", "");
                                 
-                                viewModel.getEliminarLiveData().observe(getViewLifecycleOwner(), valor -> {
-                                    if (valor) {
+                                viewModel.getEliminarLiveData().observe(getViewLifecycleOwner(), eliminada -> {
+                                    if (eliminada) {
                                         Toast.makeText(getContext(), "Incidencia eliminada con éxito", Toast.LENGTH_SHORT).show();
                                         cerrarVentana();
                                     } else {
@@ -173,7 +177,7 @@ public class DetallesIncidenciaFragment extends Fragment {
                                     }
                                 });
                                 
-                                viewModel.eliminarIncidencia(key);
+                                viewModel.eliminarIncidencia(key, hvm, userEsAdmin, id);
                             }
                         })
                         .setNegativeButton("No", null)
@@ -278,18 +282,24 @@ public class DetallesIncidenciaFragment extends Fragment {
 
                 String keyAntigua = (incidencia.getTitulo() + incidencia.getCreador()).replace(" ", "");
 
-                viewModel.getActualizacionLiveData().observe(getViewLifecycleOwner(), actualizacion -> {
-                    if (actualizacion) {
-                        Toast.makeText(getContext(), "Incidencia actualizada", Toast.LENGTH_SHORT).show();
-                        binding.btnGuardarDatosDetallesIncidencia.setEnabled(true);
-                        cerrarVentana();
-                    } else {
-                        Toast.makeText(getContext(), "Error al actualizar la incidencia", Toast.LENGTH_SHORT).show();
-                        binding.btnGuardarDatosDetallesIncidencia.setEnabled(true);
-                    }
+                viewModel.getUserNameLiveData().observe(getViewLifecycleOwner(), username -> {
+                    userName = username;
+
+                    viewModel.getActualizacionLiveData().observe(getViewLifecycleOwner(), actualizacion -> {
+                        if (actualizacion) {
+                            Toast.makeText(getContext(), "Incidencia actualizada", Toast.LENGTH_SHORT).show();
+                            binding.btnGuardarDatosDetallesIncidencia.setEnabled(true);
+                            cerrarVentana();
+                        } else {
+                            Toast.makeText(getContext(), "Error al actualizar la incidencia", Toast.LENGTH_SHORT).show();
+                            binding.btnGuardarDatosDetallesIncidencia.setEnabled(true);
+                        }
+                    });
+
+                    viewModel.actualizarIncidencia(nuevaIncidencia, keyAntigua, hvm, userEsAdmin, userName);
                 });
 
-                viewModel.actualizarIncidencia(nuevaIncidencia, keyAntigua);
+                viewModel.getUserName(id);
             }
         });
 

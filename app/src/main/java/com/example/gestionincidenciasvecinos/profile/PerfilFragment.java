@@ -123,7 +123,11 @@ public class PerfilFragment extends Fragment {
             binding.etNombrePerfil.setText(nombreApellidos[0]);
 
             // Apellidos
-            binding.etApellidosPerfil.setText(nombreApellidos[1]);
+            String apellidos = "";
+            for(int i=1; i<nombreApellidos.length; i++) {
+                apellidos += " " + nombreApellidos[i];
+            }
+            binding.etApellidosPerfil.setText(apellidos);
 
             // Piso y letra
             binding.etPisoLetra.setText(usuario.getPisoLetra());
